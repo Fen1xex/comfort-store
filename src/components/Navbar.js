@@ -4,8 +4,10 @@ import { FaBars } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import CartButtons from './CartButtons'
 import { links } from '../utils/constants'
+import { useProductsContext } from '../contexts/products_context'
 
 const Navbar = () => {
+  const { openSidebar } = useProductsContext()
   return (
     <Nav>
       <div className='nav-center'>
@@ -13,7 +15,7 @@ const Navbar = () => {
           <Link to='/'>
             <h3>comfort</h3>
           </Link>
-          <button className='nav-toggle'>
+          <button className='nav-toggle' onClick={openSidebar}>
             <FaBars />
           </button>
         </div>
@@ -51,6 +53,17 @@ const Nav = styled.div`
     align-items: center;
     h3 {
       margin-bottom: 0;
+    }
+  }
+  .nav-toggle {
+    font-size: 1.5rem;
+    background: transparent;
+    border-color: transparent;
+    color: var(--heading);
+    &:hover {
+      color: var(--primary1);
+      transition: all 0.1s linear;
+      cursor: pointer;
     }
   }
   @media (min-width: 992px) {
