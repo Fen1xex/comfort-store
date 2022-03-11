@@ -8,7 +8,7 @@ Variables
   /* colors */
   --blueColor: #0aa0e3;
   /* e-commerce colors */
-  --backgroundColor: #ffffe0;
+  --primary1: #ffffe0;
   --background: #f8dfb1;
   --heading: #c0403b;
   --text: #f7b49d;
@@ -38,7 +38,7 @@ Basic styles
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: var(--backgroundColor);
+  background: var(--primary1);
   color: var(--text);
   line-height: 1.5rem;
   font-size: 0.875rem;

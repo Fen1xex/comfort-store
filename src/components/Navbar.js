@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { FaBars } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import CartButtons from './CartButtons'
 
 const Navbar = () => {
   return (
@@ -19,10 +20,7 @@ const Navbar = () => {
           <li>number1</li>
           <li>number2</li>
         </ul>
-        <div className='cart-buttons'>
-          <button>cart</button>
-          <button>login</button>
-        </div>
+        <CartButtons />
       </div>
     </Nav>
   )
@@ -59,6 +57,7 @@ const Nav = styled.div`
     .nav-links {
       display: flex;
       justify-content: center;
+      align-items: center;
       li {
         margin: 0 0.5rem;
         color: var(--heading);
