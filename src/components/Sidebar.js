@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { FaTimes } from 'react-icons/fa'
 import CartButtons from './CartButtons'
+import { Link } from 'react-router-dom'
+import { links } from '../utils/constants'
 
 const Sidebar = () => {
   return (
@@ -14,12 +16,14 @@ const Sidebar = () => {
           </button>
         </div>
         <ul className='aside-links'>
-          <a href=''>
-            <li>number 1</li>
-          </a>
-          <a href=''>
-            <li>number 2</li>
-          </a>
+          {links.map((link) => {
+            const { url, id, name } = link
+            return (
+              <Link to={url} key={id}>
+                {name}
+              </Link>
+            )
+          })}
         </ul>
         <CartButtons />
       </aside>

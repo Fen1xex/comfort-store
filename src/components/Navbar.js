@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { FaBars } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import CartButtons from './CartButtons'
+import { links } from '../utils/constants'
 
 const Navbar = () => {
   return (
@@ -17,8 +18,14 @@ const Navbar = () => {
           </button>
         </div>
         <ul className='nav-links'>
-          <li>number1</li>
-          <li>number2</li>
+          {links.map((link) => {
+            const { url, id, name } = link
+            return (
+              <Link to={url} key={id}>
+                {name}
+              </Link>
+            )
+          })}
         </ul>
         <CartButtons />
       </div>
@@ -58,9 +65,13 @@ const Nav = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      li {
+      a {
         margin: 0 0.5rem;
         color: var(--heading);
+        &:hover {
+          transition: all 0.1s linear;
+          color: var(--primary1);
+        }
       }
     }
     .cart-buttons {
