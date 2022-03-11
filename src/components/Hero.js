@@ -30,6 +30,7 @@ const Hero = () => {
 }
 
 const Wrapper = styled.section`
+  margin-top: 10rem;
   min-height: 60vh;
   display: grid;
   place-items: center;

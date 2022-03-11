@@ -7,7 +7,7 @@ const Home = () => {
     <main>
       <Wrapper>
         <Hero />
-        <FeaturedProducts />
+        {/* <FeaturedProducts /> */}
       </Wrapper>
       <Services />
       <Contact />

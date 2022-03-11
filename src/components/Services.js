@@ -97,6 +97,12 @@ const Wrapper = styled.div`
       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     }
   }
+  @media (min-width: 1280px) {
+    padding: 0;
+    .center {
+      transform: translateY(5rem);
+    }
+  }
 `
 
 export default Services
