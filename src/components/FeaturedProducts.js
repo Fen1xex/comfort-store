@@ -2,6 +2,7 @@ import React from 'react'
 import { useProductsContext } from '../contexts/products_context'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { AiOutlineSearch } from 'react-icons/ai'
 
 const FeaturedProducts = () => {
   const { featured_products, products, isLoading } = useProductsContext()
@@ -16,14 +17,20 @@ const FeaturedProducts = () => {
       <div className='center'>
         <h2 className='title'>Featured Products</h2>
         <div className='featured-products'>
-          {featured_products.map((item) => {
+          {featured_products.slice(0, 3).map((item) => {
             const { name, price, image } = item
             return (
               <article key={item.id} className='featured-product'>
-                <img src={image} alt={name} />
+                <div className='img-wrapper'>
+                  <img src={image} alt={name} />
+                  <Link to={`/products/${item.id}`}>
+                    <AiOutlineSearch className='icon' />
+                  </Link>
+                </div>
+
                 <div>
                   <h4>{name}</h4>
-                  <h4>{price}</h4>
+                  <h4>${price / 100}</h4>
                 </div>
               </article>
             )
@@ -47,7 +54,7 @@ const Wrapper = styled.section`
   }
   .featured-products {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     gap: 2.5rem;
     margin-bottom: 5rem;
   }
@@ -81,6 +88,47 @@ const Wrapper = styled.section`
   .link-container {
     display: grid;
     place-items: center;
+  }
+  .img-wrapper {
+    position: relative;
+    &:hover {
+      .icon {
+        display: block;
+      }
+    }
+  }
+  .img-wrapper::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    opacity: 0;
+    transition: all 0.2s linear;
+  }
+  .img-wrapper:hover:before {
+    opacity: 0.5;
+  }
+  .icon {
+    color: var(--heading);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    padding: 10px;
+    background: var(--primary1);
+    transition: all 0.2s linear;
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: 2rem;
+    z-index: 10;
   }
 `
 
