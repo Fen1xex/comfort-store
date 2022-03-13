@@ -3,6 +3,7 @@ import { useProductsContext } from '../contexts/products_context'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { AiOutlineSearch } from 'react-icons/ai'
+import { format_price } from '../utils/helpres'
 
 const FeaturedProducts = () => {
   const { featured_products, products, isLoading } = useProductsContext()
@@ -30,7 +31,7 @@ const FeaturedProducts = () => {
 
                 <div>
                   <h4>{name}</h4>
-                  <h4>${price / 100}</h4>
+                  <h4>{format_price(price)}</h4>
                 </div>
               </article>
             )
@@ -107,7 +108,7 @@ const Wrapper = styled.section`
     background: rgba(0, 0, 0, 0.5);
     z-index: 5;
     opacity: 0;
-    transition: all 0.2s linear;
+    transition: all 0.3s linear;
   }
   .img-wrapper:hover:before {
     opacity: 0.5;
