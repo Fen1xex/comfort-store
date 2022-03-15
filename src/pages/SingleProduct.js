@@ -27,14 +27,16 @@ const SingleProduct = () => {
   if (!single_product) {
     return <h2>Loading...</h2>
   }
-  const { name, price, description, stock, sku, company } = single_product
+  const { name, price, description, stock, company, images } = single_product
   return (
     <Wrapper>
-      <div className='section-center'>
-        <PageHero title={name} products='products' />
-        <Link to='/products'>back to products</Link>
+      <PageHero title={name} products='products' />
+      <div className='section-center page'>
+        <Link to='/products' className='back-btn'>
+          back to products
+        </Link>
         <div className='single-wrapper'>
-          <ProductImages />
+          <ProductImages images={images} />
           <article className='single-product'>
             <h2>{name}</h2>
             <Stars />
@@ -60,6 +62,40 @@ const SingleProduct = () => {
   )
 }
 
-const Wrapper = styled.section``
+const Wrapper = styled.section`
+  .page {
+    min-height: calc(100vh - (20vh + 10rem));
+  }
+
+  .section-center {
+    width: 90vw;
+    max-width: 1170px;
+    margin: 5rem auto;
+  }
+  .back-btn {
+    color: var(--primary1);
+    background: var(--heading);
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    border: 2px solid var(--heading);
+    &:hover {
+      color: var(--heading);
+      background: var(--primary1);
+      transition: all 0.1s linear;
+    }
+  }
+
+  .single-wrapper {
+    margin-top: 5rem;
+    display: grid;
+    gap: 4rem;
+  }
+  @media screen and (min-width: 992px) {
+    .single-wrapper {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+`
 
 export default SingleProduct
