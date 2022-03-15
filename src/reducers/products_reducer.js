@@ -19,5 +19,15 @@ export const products_reducer = (state, action) => {
       featured_products: featured,
     }
   }
+  if (action.type === 'SINGLE_IS_LOADING') {
+    return { ...state, single_product_loading: true }
+  }
+  if (action.type === 'FETCH_SINGLE_PRODUCT') {
+    return {
+      ...state,
+      single_product: action.payload,
+      single_product_loading: false,
+    }
+  }
   throw Error(`there is no matching ${action.type}`)
 }

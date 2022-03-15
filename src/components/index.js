@@ -6,8 +6,16 @@ import FeaturedProducts from './FeaturedProducts'
 import Hero from './Hero'
 import Services from './Services'
 import Contact from './Contact'
+import ProductImages from './ProductsImages'
+import Stars from './Stars'
+import Colors from './Colors'
+import AddToCart from './AddToCart'
 
 export {
+  AddToCart,
+  Colors,
+  Stars,
+  ProductImages,
   Navbar,
   Sidebar,
   Footer,
