@@ -27,8 +27,17 @@ const SingleProduct = () => {
   if (!single_product) {
     return <h2>Loading...</h2>
   }
-  const { name, price, description, stock, company, images, stars, reviews } =
-    single_product
+  const {
+    name,
+    price,
+    description,
+    stock,
+    company,
+    images,
+    stars,
+    reviews,
+    colors,
+  } = single_product
   console.log(single_product)
   return (
     <Wrapper>
@@ -55,8 +64,8 @@ const SingleProduct = () => {
                 Brand: <span>{company}</span>
               </h4>
             </div>
-            <Colors />
-            <AddToCart />
+
+            <AddToCart colors={colors} stock={stock} />
           </article>
         </div>
       </div>
