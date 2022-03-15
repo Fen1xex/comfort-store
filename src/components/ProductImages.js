@@ -10,7 +10,6 @@ const ProductImages = ({ images = [{ url: '' }] }) => {
 
       <div className='second-images'>
         {images.map((item, index) => {
-          console.log(item)
           return (
             <img
               key={index}

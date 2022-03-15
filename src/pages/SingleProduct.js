@@ -27,7 +27,9 @@ const SingleProduct = () => {
   if (!single_product) {
     return <h2>Loading...</h2>
   }
-  const { name, price, description, stock, company, images } = single_product
+  const { name, price, description, stock, company, images, stars, reviews } =
+    single_product
+  console.log(single_product)
   return (
     <Wrapper>
       <PageHero title={name} products='products' />
@@ -39,7 +41,7 @@ const SingleProduct = () => {
           <ProductImages images={images} />
           <article className='single-product'>
             <h2>{name}</h2>
-            <Stars />
+            <Stars stars={stars} reviews={reviews} />
             <h3>{format(price)}</h3>
             <p>{description}</p>
             <div className='info'>
