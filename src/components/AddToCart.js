@@ -1,59 +1,117 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { FaCheck } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const AddToCart = ({ colors = [], stock }) => {
   const [mainColor, setMainColor] = useState(colors[0])
+  const [value, setValue] = useState(1)
+
+  const increase = () => {
+    setValue((oldValue) => {
+      let newValue = oldValue + 1
+      if (newValue > stock) {
+        newValue = stock
+      }
+      return newValue
+    })
+  }
+  const decrease = () => {
+    setValue((oldValue) => {
+      let newValue = oldValue - 1
+      if (newValue < 1) {
+        newValue = 1
+      }
+      return newValue
+    })
+  }
+
   return (
     <Wrapper>
       <div className='colors'>
-        <h4>
+        <h3>
           Color:{' '}
           {colors.map((item, index) => {
             return (
               <button
                 key={index}
+                className={`${
+                  mainColor === item ? 'color-btn active' : 'color-btn'
+                }`}
                 style={{ background: item }}
-                className={`${mainColor === item ? 'main' : null}`}
                 onClick={() => setMainColor(item)}
               >
                 {mainColor === item ? <FaCheck /> : null}
               </button>
             )
           })}
-        </h4>
+        </h3>
+      </div>
+      <div className='amount'>
+        <button onClick={increase}>+</button>
+        <span>{value}</span>
+        <button onClick={decrease}>-</button>
+        <div>
+          <Link to='/checkout'>add to cart</Link>
+        </div>
       </div>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
-  h4 {
+  h3 {
     display: flex;
     align-items: center;
+  }
+
+  .color-btn {
+    margin-left: 0.5rem;
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: none;
+    border-radius: 50%;
+    background: #000;
+    position: relative;
+    opacity: 0.5;
+    cursor: pointer;
+  }
+  .active {
+    opacity: 1;
+  }
+  svg {
+    position: absolute;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .amount {
+    span {
+      font-size: 2rem;
+      color: var(--heading);
+      margin: 0 1rem;
+    }
     button {
-      margin-left: 0.5rem;
-      display: inline-block;
-      width: 1.5rem;
-      height: 1.5rem;
+      font-size: 2rem;
+      background: transparent;
       border: none;
-      border-radius: 50%;
-      background: #000;
-      position: relative;
-      opacity: 0.5;
+      padding: 0.25rem 0.5rem;
+      cursor: pointer;
+    }
+    a {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      margin-top: 1rem;
+      border: 3px solid var(--heading);
+      color: var(--heading);
       &:hover {
-        cursor: pointer;
-      }
-      svg {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        background: var(--heading);
+        color: var(--primary1);
+        transition: all 0.1s linear;
       }
     }
-  }
-  .main {
-    opacity: 1;
   }
 `
 

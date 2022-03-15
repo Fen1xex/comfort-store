@@ -38,7 +38,6 @@ const SingleProduct = () => {
     reviews,
     colors,
   } = single_product
-  console.log(single_product)
   return (
     <Wrapper>
       <PageHero title={name} products='products' />
