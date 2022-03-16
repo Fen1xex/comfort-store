@@ -18,7 +18,9 @@ export const FilterProvider = ({ children }) => {
   }, [products])
 
   return (
-    <FilterContext.Provider value='filter'>{children}</FilterContext.Provider>
+    <FilterContext.Provider value={{ ...state }}>
+      {children}
+    </FilterContext.Provider>
   )
 }
 
