@@ -4,38 +4,22 @@ import { useFilterContext } from '../contexts/filter_context'
 import { format_price } from '../utils/helpres'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
+import { PageHero, Filters, Sort, ProductsList } from '../components'
 
 const Products = () => {
-  const { initial_products } = useFilterContext()
-
   return (
-    <Wrapper>
-      <div className='section-center grid-wrapper'>
-        <div>
-          <h3>List</h3>
+    <main>
+      <PageHero title='products' />
+      <Wrapper>
+        <div className='section-center grid-wrapper'>
+          <Filters />
+          <div>
+            <Sort />
+            <ProductsList />
+          </div>
         </div>
-        <div className='products'>
-          {initial_products.map((product) => {
-            const { image, id, price, name } = product
-            return (
-              <article key={id}>
-                <div className='img-container'>
-                  <img src={image} alt={name} />
-                  <Link to={`/products/${id}`} className='link'>
-                    <AiOutlineSearch />
-                  </Link>
-                </div>
-
-                <div className='products-info'>
-                  <h4>{name}</h4>
-                  <h4>{format_price(price)}</h4>
-                </div>
-              </article>
-            )
-          })}
-        </div>
-      </div>
-    </Wrapper>
+      </Wrapper>
+    </main>
   )
 }
 
@@ -47,9 +31,6 @@ const Wrapper = styled.section`
     display: grid;
     grid-template-columns: 1fr 5fr;
     gap: 5rem;
-  }
-  article {
-    margin: 2.5rem 0;
   }
   .img-container {
     position: relative;

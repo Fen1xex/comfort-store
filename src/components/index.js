@@ -10,8 +10,18 @@ import ProductImages from './ProductImages'
 import Stars from './Stars'
 import Colors from './Colors'
 import AddToCart from './AddToCart'
+import Filters from './Filters'
+import Sort from './Sort'
+import ProductsList from './ProductsList'
+import GridView from './GridView'
+import ListView from './ListView'
 
 export {
+  ListView,
+  GridView,
+  ProductsList,
+  Sort,
+  Filters,
   AddToCart,
   Colors,
   Stars,

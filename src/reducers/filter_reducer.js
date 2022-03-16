@@ -3,7 +3,7 @@ const filter_reducer = (state, action) => {
     return {
       ...state,
       initial_products: [...action.payload],
-      filter_products: [...action.payload],
+      filtered_products: [...action.payload],
     }
   }
   throw Error(`there is no matching ${action.type}`)
