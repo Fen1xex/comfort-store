@@ -1,9 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useFilterContext } from '../contexts/filter_context'
-import { format_price } from '../utils/helpres'
-import { AiOutlineSearch } from 'react-icons/ai'
-import { Link } from 'react-router-dom'
 import { PageHero, Filters, Sort, ProductsList } from '../components'
 
 const Products = () => {
