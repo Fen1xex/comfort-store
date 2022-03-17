@@ -8,6 +8,7 @@ const initialState = {
   initial_products: [],
   filtered_products: [],
   grid_view: false,
+  sort: 'price-lowest',
 }
 
 export const FilterProvider = ({ children }) => {
@@ -18,6 +19,10 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: 'SET_PRODUCTS', payload: products })
   }, [products])
 
+  useEffect(() => {
+    dispatch({ type: 'SORT_PRODUCTS' })
+  }, [products, state.sort])
+
   const setGridView = () => {
     dispatch({ type: 'SET_GRID_VIEW' })
   }
@@ -26,8 +31,15 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: 'SET_LIST_VIEW' })
   }
 
+  const updateSort = (event) => {
+    const value = event.target.value
+    dispatch({ type: 'UPDATE_SORT', payload: value })
+  }
+
   return (
-    <FilterContext.Provider value={{ ...state, setGridView, setListView }}>
+    <FilterContext.Provider
+      value={{ ...state, setGridView, setListView, updateSort }}
+    >
       {children}
     </FilterContext.Provider>
   )
