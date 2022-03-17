@@ -43,7 +43,12 @@ const filter_reducer = (state, action) => {
     return { ...state, filtered_products: tempProducts }
   }
   if (action.type === 'UPDATE_FILTERS') {
-    console.log('filtering')
+    const { name, value } = action.payload
+    return { ...state, filters: { ...state.filters, [name]: value } }
+  }
+  if (action.type === 'FILTER_PRODUCTS') {
+    console.log('filtering products')
+    return { ...state }
   }
   throw Error(`there is no matching ${action.type}`)
 }
