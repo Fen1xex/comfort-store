@@ -1,9 +1,12 @@
 const filter_reducer = (state, action) => {
   if (action.type === 'SET_PRODUCTS') {
+    let maxPrice = action.payload.map((product) => product.price)
+    maxPrice = Math.max(...maxPrice)
     return {
       ...state,
       initial_products: [...action.payload],
       filtered_products: [...action.payload],
+      filters: { ...state.filters, price: maxPrice, max_price: maxPrice },
     }
   }
   if (action.type === 'SET_GRID_VIEW') {
@@ -38,6 +41,9 @@ const filter_reducer = (state, action) => {
       })
     }
     return { ...state, filtered_products: tempProducts }
+  }
+  if (action.type === 'UPDATE_FILTERS') {
+    console.log('filtering')
   }
   throw Error(`there is no matching ${action.type}`)
 }

@@ -9,6 +9,15 @@ const initialState = {
   filtered_products: [],
   grid_view: false,
   sort: 'price-lowest',
+  filters: {
+    price: 0,
+    max_price: 0,
+    min_price: 0,
+    category: 'all',
+    company: 'all',
+    color: 'all',
+    shipping: false,
+  },
 }
 
 export const FilterProvider = ({ children }) => {
@@ -36,9 +45,14 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: 'UPDATE_SORT', payload: value })
   }
 
+  const updateFilters = (event) => {
+    const value = event.target.value
+    dispatch({ type: 'UPDATE_FILTERS', payload: value })
+  }
+
   return (
     <FilterContext.Provider
-      value={{ ...state, setGridView, setListView, updateSort }}
+      value={{ ...state, setGridView, setListView, updateSort, updateFilters }}
     >
       {children}
     </FilterContext.Provider>
