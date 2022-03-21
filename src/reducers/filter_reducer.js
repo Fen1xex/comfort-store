@@ -68,6 +68,22 @@ const filter_reducer = (state, action) => {
       filtered_products: tempProducts,
     }
   }
+  if (action.type === 'CLEAR_FILTERS') {
+    console.log('clear')
+    return {
+      ...state,
+      filters: {
+        ...state.filters,
+
+        text: '',
+        price: state.max_price,
+        category: 'all',
+        company: 'all',
+        color: 'all',
+        shipping: false,
+      },
+    }
+  }
   throw Error(`there is no matching ${action.type}`)
 }
 

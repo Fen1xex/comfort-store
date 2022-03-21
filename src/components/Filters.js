@@ -51,6 +51,9 @@ const Filters = () => {
                 <button
                   name='category'
                   type='button'
+                  className={`${
+                    category === item.toLowerCase() ? 'active' : null
+                  }`}
                   key={index}
                   onClick={updateFilters}
                 >
@@ -60,12 +63,57 @@ const Filters = () => {
             })}
           </div>
           {/* end of categories */}
+          {/* colors */}
+          <div className='colors'>
+            <h5>colors</h5>
+          </div>
+          {/* end of colors */}
+          {/* clear */}
+          <button onClick={clearFilters} className='clear'>
+            clear filters
+          </button>
+          {/* end of clear */}
         </form>
       </div>
     </Wrapper>
   )
 }
 
-const Wrapper = styled.section``
+const Wrapper = styled.section`
+  .categories {
+    display: grid;
+    height: 300px;
+    h5 {
+      margin: 1rem 0;
+    }
+    button {
+      background: transparent;
+      border: none;
+      margin: 0.5rem 0;
+      text-align: start;
+      color: var(--heading);
+      transition: all 0.1s linear;
+      cursor: pointer;
+    }
+    .active {
+      border-bottom: 2px solid var(--heading);
+    }
+  }
+  .clear {
+    padding: 0.25rem 0.5rem;
+    border: none;
+    background: var(--primary1);
+    color: var(--heading);
+
+    text-transform: capitalize;
+    &:hover {
+      transition: all 0.1s linear;
+
+      background: var(--heading);
+      color: white;
+      cursor: pointer;
+    }
+  }
+`
 
 export default Filters
