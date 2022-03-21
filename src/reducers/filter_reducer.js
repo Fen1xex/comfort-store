@@ -52,29 +52,40 @@ const filter_reducer = (state, action) => {
     const { text, category, company, color, price, shipping } = state.filters
 
     let tempProducts = [...all_products]
+    //text
     if (text) {
       tempProducts = tempProducts.filter((product) => {
         return product.name.toLowerCase().startsWith(text)
       })
     }
-
+    //category
     if (category !== 'all') {
       tempProducts = tempProducts.filter(
         (product) => product.category === category
       )
     }
+    //colors
+    if (color !== 'all') {
+      tempProducts = tempProducts.filter((product) => {
+        return product.colors.find((item) => item === color)
+      })
+    }
+    //shipping
+    if (shipping) {
+      tempProducts = tempProducts.filter((product) => product.shipping === true)
+    }
+    //price
+    tempProducts = tempProducts.filter((product) => product.price <= price)
     return {
       ...state,
       filtered_products: tempProducts,
     }
   }
   if (action.type === 'CLEAR_FILTERS') {
-    console.log('clear')
     return {
       ...state,
       filters: {
         ...state.filters,
-
         text: '',
         price: state.max_price,
         category: 'all',

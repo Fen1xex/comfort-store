@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useFilterContext } from '../contexts/filter_context'
-import { getUniqueValues } from '../utils/helpres'
+import { format_price, getUniqueValues } from '../utils/helpres'
 import { FaCheck } from 'react-icons/fa'
 
 const Filters = () => {
@@ -66,8 +66,50 @@ const Filters = () => {
           {/* colors */}
           <div className='colors'>
             <h5>colors</h5>
+            {colors.map((item, index) => {
+              return (
+                <button
+                  key={index}
+                  name='color'
+                  onClick={updateFilters}
+                  data-color={item}
+                  style={{ background: item }}
+                  className={`${
+                    color === item ? 'color-btn active' : 'color-btn'
+                  }`}
+                >
+                  {color === item ? <FaCheck /> : null}
+                </button>
+              )
+            })}
           </div>
           {/* end of colors */}
+          {/* price */}
+          <div>
+            <h5>{format_price(price)}</h5>
+            <input
+              type='range'
+              name='price'
+              onChange={updateFilters}
+              min={min_price}
+              max={max_price}
+              value={price}
+            />
+          </div>
+          {/* end of price */}
+          {/* shipping */}
+          <div className='form-control shipping'>
+            <label htmlFor='shipping'>free shipping</label>
+            <input
+              type='checkbox'
+              name='shipping'
+              id='shipping'
+              onChange={updateFilters}
+              checked={shipping}
+            />
+          </div>
+          {/* end of shipping */}
+
           {/* clear */}
           <button onClick={clearFilters} className='clear'>
             clear filters
@@ -80,6 +122,9 @@ const Filters = () => {
 }
 
 const Wrapper = styled.section`
+  svg {
+    color: white;
+  }
   .categories {
     display: grid;
     height: 300px;
@@ -113,6 +158,14 @@ const Wrapper = styled.section`
       color: white;
       cursor: pointer;
     }
+  }
+  .color-btn {
+    width: 20px;
+    height: 20px;
+    border: none;
+    margin: 0 0.1rem;
+    border-radius: 5px;
+    cursor: pointer;
   }
 `
 
