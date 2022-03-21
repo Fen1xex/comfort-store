@@ -47,8 +47,26 @@ const filter_reducer = (state, action) => {
     return { ...state, filters: { ...state.filters, [name]: value } }
   }
   if (action.type === 'FILTER_PRODUCTS') {
-    console.log('filtering products')
-    return { ...state }
+    // console.log('filtering products')
+    const { initial_products: all_products } = state
+    const { text, category, company, color, price, shipping } = state.filters
+
+    let tempProducts = [...all_products]
+    if (text) {
+      tempProducts = tempProducts.filter((product) => {
+        return product.name.toLowerCase().startsWith(text)
+      })
+    }
+
+    if (category !== 'all') {
+      tempProducts = tempProducts.filter(
+        (product) => product.category === category
+      )
+    }
+    return {
+      ...state,
+      filtered_products: tempProducts,
+    }
   }
   throw Error(`there is no matching ${action.type}`)
 }

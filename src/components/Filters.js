@@ -43,6 +43,23 @@ const Filters = () => {
             onChange={updateFilters}
           />
           {/* end of search input */}
+          {/* categories */}
+          <div className='categories'>
+            <h5>category</h5>
+            {categories.map((item, index) => {
+              return (
+                <button
+                  name='category'
+                  type='button'
+                  key={index}
+                  onClick={updateFilters}
+                >
+                  {item}
+                </button>
+              )
+            })}
+          </div>
+          {/* end of categories */}
         </form>
       </div>
     </Wrapper>
