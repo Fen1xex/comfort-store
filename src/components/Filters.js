@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useFilterContext } from '../contexts/filter_context'
+import { getUniqueValues } from '../utils/helpres'
 import { FaCheck } from 'react-icons/fa'
 
 const Filters = () => {
@@ -19,6 +20,11 @@ const Filters = () => {
     clearFilters,
     initial_products,
   } = useFilterContext()
+
+  const categories = getUniqueValues(initial_products, 'category')
+  const companies = getUniqueValues(initial_products, 'company')
+  const colors = getUniqueValues(initial_products, 'colors')
+
   return (
     <Wrapper>
       <div className='content'>
