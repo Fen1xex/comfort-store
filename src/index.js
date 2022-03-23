@@ -5,13 +5,16 @@ import App from './App'
 import { ProductsProvider } from './contexts/products_context'
 import { FilterProvider } from './contexts/filter_context'
 import { CartProvider } from './contexts/cart_context'
+import { AuthProvider } from './contexts/auth_context'
 
 ReactDOM.render(
   <React.StrictMode>
     <ProductsProvider>
       <FilterProvider>
         <CartProvider>
-          <App />
+          <AuthProvider>
+            <App />
+          </AuthProvider>
         </CartProvider>
       </FilterProvider>
     </ProductsProvider>

@@ -5,8 +5,10 @@ import CartButtons from './CartButtons'
 import { Link } from 'react-router-dom'
 import { links } from '../utils/constants'
 import { useProductsContext } from '../contexts/products_context'
+import { useAuthContext } from '../contexts/auth_context'
 
 const Sidebar = () => {
+  const { user, signOut, signInWithGithub } = useAuthContext()
   const { isSidebarOpen, closeSidebar } = useProductsContext()
   return (
     <Wrapper>
@@ -26,9 +28,11 @@ const Sidebar = () => {
               </Link>
             )
           })}
-          <Link to='/checkout' onClick={closeSidebar}>
-            checkout
-          </Link>
+          {user ? (
+            <Link to='/checkout' onClick={closeSidebar}>
+              checkout
+            </Link>
+          ) : null}
         </ul>
         <CartButtons />
       </aside>

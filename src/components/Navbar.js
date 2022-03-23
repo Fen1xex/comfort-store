@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom'
 import CartButtons from './CartButtons'
 import { links } from '../utils/constants'
 import { useProductsContext } from '../contexts/products_context'
+import { useAuthContext } from '../contexts/auth_context'
 
 const Navbar = () => {
+  const { user, signOut, signInWithGithub } = useAuthContext()
   const { openSidebar } = useProductsContext()
   return (
     <Nav>
@@ -28,7 +30,7 @@ const Navbar = () => {
               </Link>
             )
           })}
-          <Link to='/checkout'>checkout</Link>
+          {user ? <Link to='/checkout'>checkout</Link> : null}
         </ul>
         <CartButtons />
       </div>
