@@ -15,8 +15,10 @@ import Sort from './Sort'
 import ProductsList from './ProductsList'
 import GridView from './GridView'
 import ListView from './ListView'
+import CartContent from './CartContent'
 
 export {
+  CartContent,
   ListView,
   GridView,
   ProductsList,

@@ -31,8 +31,17 @@ const CartProvider = ({ children }) => {
     localStorage.setItem('cart', JSON.stringify(state.cart))
   }, [state.cart])
 
+  //remove items from cart
+  const removeItems = () => {}
+
+  //clear cart
+  const clearCart = () => {}
+  //toggle amount
+  const toggleAmount = () => {}
   return (
-    <CartContext.Provider value={{ ...state, addToCart }}>
+    <CartContext.Provider
+      value={{ ...state, addToCart, removeItems, clearCart, toggleAmount }}
+    >
       {children}
     </CartContext.Provider>
   )
