@@ -28,6 +28,7 @@ const CartProvider = ({ children }) => {
 
   //add to localStorage
   useEffect(() => {
+    dispatch({ type: 'COUNT_TOTAL_AMOUNT' })
     localStorage.setItem('cart', JSON.stringify(state.cart))
   }, [state.cart])
 
