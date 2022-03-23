@@ -32,7 +32,9 @@ const CartProvider = ({ children }) => {
   }, [state.cart])
 
   //remove items from cart
-  const removeItems = () => {}
+  const removeItems = (id) => {
+    dispatch({ type: 'REMOVE_ITEMS', payload: id })
+  }
 
   //clear cart
   const clearCart = () => {}

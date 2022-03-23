@@ -21,10 +21,10 @@ const CartItem = ({ id, image, color, name, price, amount }) => {
       <h5 className='subtotal'>{format_price(price * amount)}</h5>
       <div className='amount'>
         <button>+</button>
-        <span>10</span>
+        <span>{amount}</span>
         <button>-</button>
       </div>
-      <button className='btn-trash'>
+      <button className='btn-trash' onClick={() => removeItems(id)}>
         <FaTrash />
       </button>
     </Wrapper>
@@ -60,11 +60,10 @@ const Wrapper = styled.div`
   }
 
   .btn-trash {
-    color: var(--clr-white);
+    color: red;
     background: transparent;
     border: transparent;
-    letter-spacing: var(--spacing);
-    background: var(--clr-red-dark);
+
     width: 1.5rem;
     height: 1.5rem;
     display: flex;
