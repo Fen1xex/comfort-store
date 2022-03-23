@@ -33,6 +33,9 @@ const cart_reducer = (state, action) => {
     let tempItems = state.cart.filter((item) => item.id !== action.payload)
     return { ...state, cart: tempItems }
   }
+  if (action.type === 'CLEAR') {
+    return { ...state, cart: [] }
+  }
   throw new Error(`there is no matching "${action.type}"`)
 }
 

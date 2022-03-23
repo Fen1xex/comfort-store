@@ -37,7 +37,9 @@ const CartProvider = ({ children }) => {
   }
 
   //clear cart
-  const clearCart = () => {}
+  const clearCart = () => {
+    dispatch({ type: 'CLEAR' })
+  }
   //toggle amount
   const toggleAmount = () => {}
   return (
