@@ -64,7 +64,7 @@ const SingleProduct = () => {
               </h4>
             </div>
 
-            <AddToCart colors={colors} stock={stock} />
+            <AddToCart colors={colors} stock={stock} product={single_product} />
           </article>
         </div>
       </div>

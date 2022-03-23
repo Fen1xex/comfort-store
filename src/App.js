@@ -8,6 +8,7 @@ import {
   Products,
   SingleProduct,
   Checkout,
+  CartPage,
 } from './pages/index'
 import { Navbar, Sidebar, Footer } from './components/index'
 
@@ -22,6 +23,7 @@ const App = () => {
           <Route path='/about' element={<About />} />
           <Route path='/products' element={<Products />} />
           <Route path='/products/:id' element={<SingleProduct />} />
+          <Route path='/cart' element={<CartPage />} />
           <Route path='/checkout' element={<Checkout />} />
           <Route path='*' element={<Error />} />
         </Routes>
